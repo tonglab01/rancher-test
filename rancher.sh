@@ -1,6 +1,7 @@
 ###### Rancher Server ########
 #############################################################################################################
 ip_private_rancher=192.168.228.89
+ip_private_network=192.168.228.0
 #############################################################################################################
 #!/bin/bash
 
@@ -88,7 +89,7 @@ cat << EOF > /etc/exports
 # Example for NFSv4:
 # /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)
 # /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
-/mnt/nfs	$ip_private_rancher/24(rw,sync,no_subtree_check,insecure,no_root_squash,no_all_squash)
+/mnt/nfs	$ip_private_network/24(rw,sync,no_subtree_check,insecure,no_root_squash,no_all_squash)
 EOF
 
 sudo exportfs -rav
